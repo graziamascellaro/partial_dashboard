@@ -1,0 +1,2 @@
+Non visualizzare tabella top 10
+Sulla gaussiana mostrare solo la label con nome laboratorio
