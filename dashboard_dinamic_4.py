@@ -1354,6 +1354,15 @@ with tabs[4]:
     else:
 
         st.divider()
+
+        st.info(
+            "See you tomorrow for the final results! "
+            "Make sure all 4 tubes have been uploaded. "
+            "Good luck to all participants! 🍀"
+        )
+
+        
+        st.divider()
         img_waiting = _image_to_base64("WaitingForTheWinner.png")
         show_waiting_image(img_waiting)
 
