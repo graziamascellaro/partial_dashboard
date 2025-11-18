@@ -367,7 +367,7 @@ def plot_gaussian_competition(
         y=y,
         mode="lines",
         name=f"Gaussian Curve",
-        line=dict(color="#22326b", width=2),
+        line=dict(color="#22326b", width=2), hoverinfo="skip"
     ))
 
     # Punti laboratori
