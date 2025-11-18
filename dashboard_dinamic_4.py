@@ -1316,6 +1316,8 @@ with tabs[4]:
     #     # lo azzero così non li rilancio ad ogni rerun
     #     st.session_state["trigger_confetti_final"] = False
 
+    #18.11 - Commento il podio e la tabella finale perchè non li devo mostrare ora
+    #
 
     # Controllo che ci siano tutti e 4 i tubi con rating
     if not all(tube in dfs_by_tube for tube in tube_labels):
@@ -1348,26 +1350,26 @@ with tabs[4]:
 
         merged = merged.sort_values(by="FinalScore", ascending=False).reset_index(drop=True)
 
-        podium_step = show_top3_podium(merged)
+        # podium_step = show_top3_podium(merged)
         
         
-        if podium_step < 3:
-            st.divider()
-        else:
-            st.divider()
-            st.markdown("###  Final Results sorted by Ratings")
-            # rename columns for display
-            merged_display = merged.rename(columns={'labName_short': 'Laboratory'})
-            # Format the columns for display
-            merged_display["Rating_XA"] = merged_display["Rating_XA"].map(lambda x: f"{x:.3f}")
-            merged_display["Rating_XB"] = merged_display["Rating_XB"].map(lambda x: f"{x:.3f}")
-            merged_display["Rating_YA"] = merged_display["Rating_YA"].map(lambda x: f"{x:.3f}")
-            merged_display["Rating_YB"] = merged_display["Rating_YB"].map(lambda x: f"{x:.3f}")
-            merged_display["FinalScore"] = merged_display["FinalScore"].map(lambda x: f"{x:.3f}")
+        # if podium_step < 3:
+        #     st.divider()
+        # else:
+        #     st.divider()
+        #     st.markdown("###  Final Results sorted by Ratings")
+        #     # rename columns for display
+        #     merged_display = merged.rename(columns={'labName_short': 'Laboratory'})
+        #     # Format the columns for display
+        #     merged_display["Rating_XA"] = merged_display["Rating_XA"].map(lambda x: f"{x:.3f}")
+        #     merged_display["Rating_XB"] = merged_display["Rating_XB"].map(lambda x: f"{x:.3f}")
+        #     merged_display["Rating_YA"] = merged_display["Rating_YA"].map(lambda x: f"{x:.3f}")
+        #     merged_display["Rating_YB"] = merged_display["Rating_YB"].map(lambda x: f"{x:.3f}")
+        #     merged_display["FinalScore"] = merged_display["FinalScore"].map(lambda x: f"{x:.3f}")
             
-            html_table = make_colored_html(
-                merged_display[["Laboratory", "Rating_XA", "Rating_XB", "Rating_YA", "Rating_YB", "FinalScore"]],
-                highlight_top=3,
-            )
+        #     html_table = make_colored_html(
+        #         merged_display[["Laboratory", "Rating_XA", "Rating_XB", "Rating_YA", "Rating_YB", "FinalScore"]],
+        #         highlight_top=3,
+        #     )
 
-            components.html(html_table, height=500, scrolling=True)
+        #     components.html(html_table, height=500, scrolling=True)
