@@ -464,6 +464,23 @@ def _image_to_base64(path: str) -> str:
     with open(path, "rb") as f:
         return base64.b64encode(f.read()).decode("utf-8")
 
+def show_waiting_image(image_base64: str):
+    """
+    Mostra nella pagina un'immagine (in base64) centrata e adattata alla larghezza.
+    """
+    if not image_base64:
+        st.warning("Image not found or could not be loaded.")
+        return
+
+    st.markdown(
+        f"""
+        <div style="text-align: center; margin-top: 25px;">
+            <img src="data:image/png;base64,{image_base64}"
+                 style="max-width: 85%; height: auto; border-radius: 12px;">
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
 def show_winner_banner(best_lab, labname_col, avg_col, z_col,
                        bg_path="crown_yellow_modified-removebg-preview_1.png"):
@@ -1325,6 +1342,10 @@ with tabs[4]:
         # st.info("Please upload and configure all 4 JSON files (XA, XB, YA, YB) first.")
         st.info("See you tomorrow for the final results! Make sure all 4 tubes have been uploaded. Good luck to all participants! 🍀")
     else:
+
+        st.divider()
+        img_waiting = _image_to_base64("WaitingForTheWinner.png")
+        show_waiting_image(img_waiting)
 
         df_XA = dfs_by_tube["XA"][["labName_short", "Rating_XA"]]
         df_XB = dfs_by_tube["XB"][["labName_short", "Rating_XB"]]
