@@ -287,7 +287,7 @@ def plot_gaussian_competition(
         fig.add_trace(go.Scatter(
             x=np.concatenate([z_zone, z_zone[::-1]]),
             y=np.concatenate([y_zone, np.zeros_like(y_zone)]),
-            fill="toself", fillcolor=color, line=dict(width=0), mode="lines", name=name, showlegend=False
+            fill="toself", fillcolor=color, line=dict(width=0), mode="lines", name=name, showlegend=False, hoverinfo="skip"
         ))
     
     fig.add_trace(go.Scatter(
@@ -1285,29 +1285,31 @@ def show_top3_podium(df_scores):
 
 # -------------------- TAB FINALE: All Together --------------------
 with tabs[4]:
+    #18.11 - Commento il podio e la tabella finale perchè non li devo mostrare ora
+    # mostro solo l'immagine del podio e l'immagine waitingForFinal
     st.divider()
     st.subheader("🏁 Final Score")
     
-    st.markdown("""
-    The final score for each laboratory is calculated as a weighted sum of the ratings obtained in each tube, according to the following equiation:
-    """)
+    # st.markdown("""
+    # The final score for each laboratory is calculated as a weighted sum of the ratings obtained in each tube, according to the following equiation:
+    # """)
 
-    st.latex(r"""
-            Magnethon\ Winner = 
-            \max_{0 \leq z \leq 3} 
-            \left[
-            40 \cdot \left(\frac{3 - |Z_{X_A}|}{3}\right) +
-            30 \cdot \left(\frac{3 - |Z_{X_B}|}{3}\right) +
-            15 \cdot \left(\frac{3 - |Z_{Y_A}|}{3}\right) +
-            15 \cdot \left(\frac{3 - |Z_{Y_B}|}{3}\right)
-            \right]
-            """)
+    # st.latex(r"""
+    #         Magnethon\ Winner = 
+    #         \max_{0 \leq z \leq 3} 
+    #         \left[
+    #         40 \cdot \left(\frac{3 - |Z_{X_A}|}{3}\right) +
+    #         30 \cdot \left(\frac{3 - |Z_{X_B}|}{3}\right) +
+    #         15 \cdot \left(\frac{3 - |Z_{Y_A}|}{3}\right) +
+    #         15 \cdot \left(\frac{3 - |Z_{Y_B}|}{3}\right)
+    #         \right]
+    #         """)
 
     
-    st.markdown("""
-        where **Z<sub>X<sub>A</sub></sub>**, **Z<sub>X<sub>B</sub></sub>**, **Z<sub>Y<sub>A</sub></sub>**, **Z<sub>Y<sub>B</sub></sub>** are the z-scores
-        calculated for each team based on the uploaded values of Tubes X<sub>A</sub>, X<sub>B</sub>, Y<sub>A</sub>, Y<sub>B</sub> respectively.
-        """, unsafe_allow_html=True)
+    # st.markdown("""
+    #     where **Z<sub>X<sub>A</sub></sub>**, **Z<sub>X<sub>B</sub></sub>**, **Z<sub>Y<sub>A</sub></sub>**, **Z<sub>Y<sub>B</sub></sub>** are the z-scores
+    #     calculated for each team based on the uploaded values of Tubes X<sub>A</sub>, X<sub>B</sub>, Y<sub>A</sub>, Y<sub>B</sub> respectively.
+    #     """, unsafe_allow_html=True)
     
     st.divider()
     #     # Confetti in alto nel tab finale quando il primo è stato rivelato
@@ -1316,12 +1318,12 @@ with tabs[4]:
     #     # lo azzero così non li rilancio ad ogni rerun
     #     st.session_state["trigger_confetti_final"] = False
 
-    #18.11 - Commento il podio e la tabella finale perchè non li devo mostrare ora
-    #
+    
 
     # Controllo che ci siano tutti e 4 i tubi con rating
     if not all(tube in dfs_by_tube for tube in tube_labels):
-        st.info("Please upload and configure all 4 JSON files (XA, XB, YA, YB) first.")
+        # st.info("Please upload and configure all 4 JSON files (XA, XB, YA, YB) first.")
+        st.info("See you tomorrow for the final results! Make sure all 4 tubes have been uploaded. Good luck to all participants! 🍀")
     else:
 
         df_XA = dfs_by_tube["XA"][["labName_short", "Rating_XA"]]
