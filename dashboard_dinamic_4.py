@@ -1304,8 +1304,8 @@ def show_top3_podium(df_scores):
 with tabs[4]:
     #18.11 - Commento il podio e la tabella finale perchè non li devo mostrare ora
     # mostro solo l'immagine del podio e l'immagine waitingForFinal
-    st.divider()
-    st.subheader("🏁 Final Score")
+    # st.divider()
+    # st.subheader("🏁 Final Score")
     
     # st.markdown("""
     # The final score for each laboratory is calculated as a weighted sum of the ratings obtained in each tube, according to the following equiation:
@@ -1361,7 +1361,7 @@ with tabs[4]:
             "Good luck to all participants! 🍀"
         )
 
-        
+
         st.divider()
         img_waiting = _image_to_base64("WaitingForTheWinner.png")
         show_waiting_image(img_waiting)
