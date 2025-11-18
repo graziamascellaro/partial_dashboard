@@ -1328,7 +1328,7 @@ with tabs[4]:
     #     calculated for each team based on the uploaded values of Tubes X<sub>A</sub>, X<sub>B</sub>, Y<sub>A</sub>, Y<sub>B</sub> respectively.
     #     """, unsafe_allow_html=True)
     
-    st.divider()
+    # st.divider()
     #     # Confetti in alto nel tab finale quando il primo è stato rivelato
     # if st.session_state.get("trigger_confetti_final", False):
     #     trigger_confetti()
