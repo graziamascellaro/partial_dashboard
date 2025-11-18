@@ -767,9 +767,9 @@ for i in range(4):
             chart_key=f"gauss_{tube}"
         )
 
-        # # Calcolo rating per questo tubo
-        # rating_col = f"Rating_{tube}"
-        # df[rating_col] = _compute_rating_from_z(df[z_col], tube)
+        # Calcolo rating per questo tubo
+        rating_col = f"Rating_{tube}"
+        df[rating_col] = _compute_rating_from_z(df[z_col], tube)
 
         # st.divider()
         # st.markdown("### Top 10 ")
@@ -808,8 +808,8 @@ for i in range(4):
         # html_table = make_colored_html(winners_to_display, highlight_top=3)
         # components.html(html_table, height=360, scrolling=True)
 
-        # # Salvo df per uso nella pagina finale
-        # dfs_by_tube[tube] = df.copy()
+        # Salvo df per uso nella pagina finale
+        dfs_by_tube[tube] = df.copy()
 
 # -------------------- Funzione podio finale --------------------
 def play_hidden_sound(sound_path="Trombetta_Ryanair.mp3"):
@@ -1340,7 +1340,17 @@ with tabs[4]:
     # Controllo che ci siano tutti e 4 i tubi con rating
     if not all(tube in dfs_by_tube for tube in tube_labels):
         # st.info("Please upload and configure all 4 JSON files (XA, XB, YA, YB) first.")
-        st.info("See you tomorrow for the final results! Make sure all 4 tubes have been uploaded. Good luck to all participants! 🍀")
+        # st.info("See you tomorrow for the final results! Make sure all 4 tubes have been uploaded. Good luck to all participants! 🍀")
+        #         # MOSTRA SUBITO L’IMMAGINE DI ATTESA
+        # img_waiting = _image_to_base64("WaitingForTheWinner.png")
+        # show_waiting_image(img_waiting)
+
+        st.info(
+            "See you tomorrow for the final results! "
+            "Make sure all 4 tubes have been uploaded. "
+            "Good luck to all participants! 🍀"
+        )
+    
     else:
 
         st.divider()
